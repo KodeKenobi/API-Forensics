@@ -16,11 +16,7 @@
     ],
     "action": {
         "default_title": "Open API Forensics",
-        "default_icon": {
-            "16": "icons/icon16.png",
-            "48": "icons/icon48.png",
-            "128": "icons/icon128.png"
-        }
+        "default_icon": "icons/icon_master.svg"
     },
     "side_panel": {
         "default_path": "sidepanel.html"
@@ -43,8 +39,8 @@
         }
     ],
     "icons": {
-        "16": "icons/icon16.png",
-        "48": "icons/icon48.png",
-        "128": "icons/icon128.png"
+        "16": "icons/icon_master.svg",
+        "48": "icons/icon_master.svg",
+        "128": "icons/icon_master.svg"
     }
 }
