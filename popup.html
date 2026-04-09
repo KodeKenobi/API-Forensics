@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Forensics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #0c1021;
+            color: #f1f5f9;
+            margin: 0;
+            padding: 24px 20px 20px;
+            width: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .brand-logo {
+            width: 30px; height: 30px;
+            background: #4d72e8;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .brand-logo svg { width: 16px; height: 16px; }
+        .brand-name {
+            font-weight: 800;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            color: #eef1f8;
+        }
+
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+            font-size: 11px;
+            font-weight: 600;
+            color: #34d399;
+            margin-bottom: 18px;
+        }
+        .status-dot {
+            width: 6px; height: 6px;
+            background: #34d399;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        #start-audit {
+            width: 100%;
+            background: #4d72e8;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform 150ms, opacity 150ms;
+            letter-spacing: 0.3px;
+        }
+        #start-audit:hover { opacity: 0.92; }
+        #start-audit:active { transform: scale(0.97); }
+        #start-audit svg { width: 15px; height: 15px; }
+
+        .footer {
+            margin-top: 14px;
+            font-size: 10px;
+            color: #64748b;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="brand">
+        <div class="brand-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+        </div>
+        <span class="brand-name">API Forensics</span>
+    </div>
+
+    <div class="status-pill">
+        <div class="status-dot"></div>
+        Interceptor Active
+    </div>
+
+    <button id="start-audit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+        </svg>
+        Reload & Capture
+    </button>
+
+    <div class="footer">Reloads page to start fresh capture</div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
