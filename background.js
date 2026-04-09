@@ -49,10 +49,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             saveCache();
         }
 
-        // Forward to side panel
-        try {
-            chrome.runtime.sendMessage({ action: 'api_update', data: report });
-        } catch {}
+        // Forward to side panel; ignore when no listener (panel closed). Callback form avoids .catch on non-Promise.
+        chrome.runtime.sendMessage({ action: 'api_update', data: report }, () => {
+            void chrome.runtime.lastError;
+        });
     }
 
     if (msg.action === 'stack_report') {
@@ -60,7 +60,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         if (tabId) {
             stackCache[tabId] = msg.data;
             saveCache();
-            try { chrome.runtime.sendMessage({ action: 'stack_update', tabId, data: msg.data }); } catch {}
+            chrome.runtime.sendMessage({ action: 'stack_update', tabId, data: msg.data }, () => {
+                void chrome.runtime.lastError;
+            });
         }
     }
 

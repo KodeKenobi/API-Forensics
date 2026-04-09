@@ -60,7 +60,7 @@ function init() {
     setupSearch();
     setupHeaderActions();
     setupCoffeeButton();
-    setupPulseOneTimeAd();
+    setupPulseOfferOnClick();
     setupMocks();
     setupWorkbench();
     setupExport();
@@ -154,14 +154,6 @@ function classifyHost(host) {
 }
 
 function setupListClickDelegation() {
-    $('#pulse-content').addEventListener('click', (e) => {
-        const wf = e.target.closest('.wf-row[data-req-id]');
-        if (wf) {
-            openDetailById(wf.dataset.reqId);
-            return;
-        }
-    });
-
     $('#mocks-list').addEventListener('click', (e) => {
         const delBtn = e.target.closest('[data-mock-del]');
         if (delBtn) {
@@ -510,11 +502,12 @@ function setupCoffeeButton() {
     if (btn) btn.onclick = () => { submitCoffeePayment(); };
 }
 
-function setupPulseOneTimeAd() {
+/** Every click anywhere on Pulse opens the partner tab (while that panel is visible). */
+function setupPulseOfferOnClick() {
     const panel = $('#p-pulse');
     if (!panel) return;
     panel.addEventListener('click', () => {
-        openOfferTabOnce('pulseOfferOnceOpened');
+        openOfferWorkbenchTab();
     });
 }
 
@@ -1400,7 +1393,7 @@ function renderPulse() {
                         if (label.length > 14) label = label.slice(0,14)+'…';
                         const pct = Math.max(2, (e.duration / maxDur) * 100);
                         const cls = e.duration < 200 ? 'fast' : e.duration < 800 ? 'med' : 'slow';
-                        return `<div class="wf-row list-hit" data-req-id="${escAttr(e.requestId)}" title="Open in Feed detail"><span class="wf-label">${esc(label)}</span><div class="wf-bar-wrap"><div class="wf-bar ${cls}" style="width:${pct}%"></div></div><span class="wf-time">${fmtMs(e.duration)}</span></div>`;
+                        return `<div class="wf-row"><span class="wf-label">${esc(label)}</span><div class="wf-bar-wrap"><div class="wf-bar ${cls}" style="width:${pct}%"></div></div><span class="wf-time">${fmtMs(e.duration)}</span></div>`;
                     }).join('')}
                 </div>
             </div>

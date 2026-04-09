@@ -1,46 +1,45 @@
 {
-    "manifest_version": 3,
-    "name": "API Forensics",
-    "version": "1.0.0",
-    "description": "Professional API & network traffic inspector. Capture requests, detect schema shifts, replay calls, and export to Postman.",
-    "host_permissions": [
-        "https://api.exchangerate-api.com/*",
-        "https://open.er-api.com/*"
-    ],
-    "minimum_chrome_version": "111",
-    "permissions": [
-        "sidePanel",
-        "storage",
-        "tabs",
-        "scripting"
-    ],
-    "action": {
-        "default_title": "Open API Forensics",
-        "default_icon": "icons/icon_master.svg"
-    },
-    "side_panel": {
-        "default_path": "sidepanel.html"
-    },
-    "background": {
-        "service_worker": "background.js"
-    },
-    "content_scripts": [
-        {
-            "matches": ["<all_urls>"],
-            "js": ["interceptor.js"],
-            "run_at": "document_start",
-            "world": "MAIN"
-        },
-        {
-            "matches": ["<all_urls>"],
-            "js": ["content.js"],
-            "run_at": "document_start",
-            "world": "ISOLATED"
-        }
-    ],
-    "icons": {
-        "16": "icons/icon_master.svg",
-        "48": "icons/icon_master.svg",
-        "128": "icons/icon_master.svg"
+  "manifest_version": 3,
+  "name": "API Forensics",
+  "version": "1.0.0",
+  "description": "Professional API & network traffic inspector. Capture requests, detect schema shifts, replay calls, and export to Postman.",
+  "host_permissions": [
+    "https://api.exchangerate-api.com/*",
+    "https://open.er-api.com/*"
+  ],
+  "minimum_chrome_version": "111",
+  "permissions": ["sidePanel", "storage", "tabs", "scripting"],
+  "action": {
+    "default_title": "Open API Forensics",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
     }
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["interceptor.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "world": "ISOLATED"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
 }
