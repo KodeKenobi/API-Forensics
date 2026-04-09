@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "API Forensics",
     "version": "1.0.0",
-    "description": "See API calls from the page you are on. Inspect requests and responses, notice when data shapes change, try requests again, mock responses, and export captures — from one side panel.",
+    "description": "Professional API & network traffic inspector. Capture requests, detect schema shifts, replay calls, and export to Postman.",
     "host_permissions": [
         "https://api.exchangerate-api.com/*",
         "https://open.er-api.com/*"
